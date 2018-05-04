@@ -1,0 +1,46 @@
+<div class="">
+  <!-- Sidebar Widgets Column -->
+
+  <!-- Search Widget -->
+  <div class="panel panel-default">
+    <div class="card bg-light mb-3" style="max-width: 18rem;">
+      <div class="card-header">Find:</div>
+      <div class="card-body">
+        <div class="input-group">
+          <input name="search" type="text" class="form-control" placeholder="Search for..." [(ngModel)]="search">
+          <span class="input-group-btn">
+          <button class="btn btn-secondary" type="button" (click)="getArticles('&keyWord='+search)">Find</button>
+        </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Categories Widget -->
+  <div class="panel panel-default">
+    <div class="card bg-light mb-3" style="max-width: 18rem;">
+      <div class="card-header">Categories:</div>
+      <div class="card-body">
+        <!--<h5 class="card-title">Light card title</h5>-->
+        <div class="row">
+          <a *ngFor="let category of categories" (click)="getArticles('&category_id='+category.id)"
+             class="card-text category-name">{{category.category_name}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Side Widget -->
+  <div class="panel panel-default">
+    <div class="card bg-light mb-3" style="max-width: 18rem;">
+      <div class="card-header">Users:</div>
+      <div class="card-body">
+        <!--<h5 class="card-title">Light card title</h5>-->
+        <div class="row">
+          <a *ngFor="let user of users" (click)="getArticles('&user_id='+user.id)"
+             class="card-text category-name">{{user.name}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--close col-md-->
+</div>

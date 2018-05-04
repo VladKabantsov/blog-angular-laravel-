@@ -1,0 +1,17 @@
+.sub-comment {
+  margin-left: 45px;
+}
+
+.post-at {
+  margin-top: 10px;
+  color: rgba(0,0,0,.5);
+}
+
+.sub-com {
+  color: #28a745;
+}
+
+.delete-sub-comm {
+  color: red!important;
+  padding-left: 50px;
+}

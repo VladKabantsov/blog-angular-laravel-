@@ -1,0 +1,44 @@
+<div class="card my-4">
+  <h5 class="card-header">Leave a Comment:</h5>
+  <div class="card-body">
+    <form method="POST">
+      <div class="form-group">
+        <p *ngIf="comm" class="sub-com">Comment: {{comm}}<a (click)="deleteSubComment()" class="delete-sub-comm">delete</a></p>
+        <textarea name="content" class="form-control" rows="3" [(ngModel)]="content" #cont="ngModel" required></textarea>
+      </div>
+      <div *ngIf="message" class="alert alert-success">
+        {{message}}
+      </div>
+      <button [disabled]="cont.invalid" type="submit" class="btn btn-primary" (click)="postComment()">Post</button>
+    </form>
+  </div>
+</div>
+<hr>
+<div *ngFor="let comment of comments">
+  <div *ngIf="!comment.parent_id">
+    <div class="media mb-4">
+      <div class="media-body">
+        <h5 class="mt-0 user-name">
+          {{ comment.user.name }}
+        </h5>
+        <span class="comment">{{ comment.content }}</span>
+        <p class="post-at">Posted at <span class="post-time">{{ comment.created_at | date }}</span></p>
+        <!--<p><a (click)="setSubComment(comment)">Comment</a></p>-->
+        <div *ngFor="let item of comments">
+          <div *ngIf="item.parent_id==comment.id">
+            <div class="media mt-4 sub-comment">
+              <div class="media-body">
+                <h5 class="mt-0">
+                  {{ item.user.name }}
+                </h5>
+                <span class="comment">{{ item.content }}</span>
+                <p class="post-at">Posted at <span class="post-time">{{ item.created_at | date }}</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

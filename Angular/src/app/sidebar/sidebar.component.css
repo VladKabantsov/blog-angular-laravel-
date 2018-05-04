@@ -1,0 +1,12 @@
+a, div {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif!important;
+}
+
+.category-name {
+  width: 50%;
+  text-align: center;
+}
+
+a {
+  color: cornflowerblue!important;
+}

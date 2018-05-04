@@ -1,0 +1,6 @@
+<form method="POST">
+  <div class="form-group">
+    <textarea name="content" class="form-control" rows="3" [(ngModel)]="content" #cont="ngModel" required></textarea>
+  </div>
+  <button [disabled]="cont.invalid" type="submit" class="btn btn-primary" (click)="updateComment(content)">Update</button>
+</form>

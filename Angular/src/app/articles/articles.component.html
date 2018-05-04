@@ -1,0 +1,23 @@
+<hr>
+<div *ngFor="let article of articles">
+  <div class="mx-auto">
+    <a [routerLink]="['articles',article.id]" >
+      <h2 class="post-title">
+        {{ article.title }}
+      </h2>
+      <h3 class="post-subtitle">
+        {{ article.short_text }}
+      </h3>
+    </a>
+    <p class="post-meta">Posted by:
+      <a (click)="this.articleService.getArticles('&user_id='+article.user.id)">{{ article.user.name }}</a>
+      on {{ article.created_at}}
+    </p>
+    <p class="post-meta">Category: <a (click)="this.articleService.getArticles('&category_id='+article.category.id)">{{ article.category.category_name}}</a></p>
+    <hr>
+  </div>
+</div>
+<div class="next-prev">
+  <button [disabled]="previousPg" (click)="previousPage()" class="btn btn-outline-secondary">Previous</button>
+  <button [disabled]="nextPg" (click)="nextPage()" class="btn btn-outline-secondary">Next</button>
+</div>

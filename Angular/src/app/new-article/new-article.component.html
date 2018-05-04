@@ -1,0 +1,31 @@
+<form method="POST" id="new-article-form">
+  <div class="form-group">
+    <label for="title">Title: </label>
+    <input name="title" type="text" class="form-control" id="title" [(ngModel)]="title" #tit="ngModel" required>
+  </div>
+  <div [hidden]="tit.valid || tit.untouched" class="alert alert-danger">
+    You should type the title
+  </div>
+  <div class="form-group">
+    <label for="text">Text:</label>
+    <textarea name="text" class="form-control" rows="5" [(ngModel)]="text" #cont="ngModel" required></textarea>
+  </div>
+  <div [hidden]="cont.valid || cont.untouched" class="alert alert-danger">
+    You should type the text
+  </div>
+  <div class="form-group">
+    <label for="category">Category:</label>
+    <select class="form-control" name="category" [(ngModel)]="category" #categ="ngModel" required>
+      <option *ngFor="let cat of categories" [value]="cat.id">
+        {{cat.category_name}}
+      </option>
+    </select>
+  </div>
+  <div [hidden]="categ.valid || categ.untouched" class="alert alert-danger">
+    You should select the category
+  </div>
+  <button [disabled]="tit.invalid || cont.invalid || categ.invalid" type="submit" class="btn btn-primary"
+          (click)="postArticle(title, text, category)">
+    Post
+  </button>
+</form>

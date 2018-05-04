@@ -1,0 +1,23 @@
+.my-nav {
+    position: fixed;
+    z-index: 9999;
+    opacity: 0.9;
+    width: 100%;
+    margin: 0;
+}
+
+.my-nav > div > ul > li > a {
+    font-size: 20px;
+    color: #212529!important;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif!important;
+
+}
+
+.my-nav > div > ul > li > a:focus, .my-nav > div > ul > li > a:hover {
+    text-decoration: none!important;
+    color: #0085A1!important;
+}
+
+.sub-comment {
+    margin-left: 35px;
+}

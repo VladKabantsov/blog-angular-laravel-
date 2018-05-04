@@ -1,0 +1,20 @@
+<form class="py-2" role="form">
+  <h3 class="text-center">Login</h3>
+  <div class="form-group">
+    <label for="inputEmailForm" class="sr-only form-control-label">Email</label>
+    <div class="mx-auto col-sm-10">
+      <input type="text" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" class="form-control" id="inputEmailForm" placeholder="email" required="">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPasswordForm" class="sr-only form-control-label">Password</label>
+    <div class="mx-auto col-sm-10">
+      <input [(ngModel)]="password" [ngModelOptions]="{standalone: true}" type="password" class="form-control" id="inputPasswordForm" placeholder="password" required="">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="mx-auto col-sm-10 pb-3 pt-2">
+      <button (click)="login(email, password)" type="submit" class="btn btn-outline-secondary btn-lg btn-block">Sign-in</button>
+    </div>
+  </div>
+</form>

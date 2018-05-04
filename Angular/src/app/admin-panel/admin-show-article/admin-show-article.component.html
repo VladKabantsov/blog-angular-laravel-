@@ -1,0 +1,62 @@
+<div class="row">
+  <div *ngIf="article" class="col-xs-12">
+    <form method="POST" id="edit-article-form">
+      <div class="form-group">
+        <label for="title">Title: </label>
+        <input name="title" type="text" class="form-control" id="title" [(ngModel)]="title" #tit="ngModel" required>
+      </div>
+      <div [hidden]="tit.valid || tit.untouched" class="alert alert-danger">
+        You should type the title
+      </div>
+      <div class="form-group">
+        <label for="text">Text:</label>
+        <textarea name="text" class="form-control" rows="5" [(ngModel)]="text" #cont="ngModel" required></textarea>
+      </div>
+      <div [hidden]="cont.valid || cont.untouched" class="alert alert-danger">
+        You should type the text
+      </div>
+      <div class="form-group">
+        <label for="category">Category:</label>
+        <select class="form-control" name="category" [(ngModel)]="category" #categ="ngModel" required>
+          <option *ngFor="let cat of categories" [value]="cat.id">
+            {{cat.category_name}}
+          </option>
+        </select>
+      </div>
+      <div [hidden]="categ.valid || categ.untouched" class="alert alert-danger">
+        You should select the category
+      </div>
+      <button [disabled]="tit.invalid || cont.invalid || categ.invalid" type="submit" class="btn btn-primary"
+              (click)="updateArticle(title, text, category)">
+        Save
+      </button>
+    </form>
+  </div>
+  <div class="row">
+    Comments:
+    <table class="table">
+      <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Content</th>
+        <th scope="col">Author</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let comment of comments">
+        <th scope="row">{{comment.id}}</th>
+        <td>{{comment.content}}</td>
+        <td>{{comment.user.name}}</td>
+        <td>
+          <button [routerLink]="['comments',comment.id]" class="btn btn-outline-info">Edit</button>
+        </td>
+        <td>
+          <button (click)="deleteComment(comment.id)" class="btn btn-outline-danger">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
